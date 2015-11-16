@@ -54,7 +54,8 @@ Then /^(?:|I )should not see \/([^\/]*)\/([imxo])?$/ do |regexp,flags|
 end
 
 Then /^(?:|I )should be on (.+)$/ do |page_name|
-  current_path = URI.parse(current_url).path
+  u =  URI.parse(current_url)
+  current_path = u.fragment ? "#{u.path}##{u.fragment}" : u.path
   if current_path.respond_to? :should
     current_path.should == path_to(page_name)
   else
