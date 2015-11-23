@@ -62,6 +62,7 @@ When /^(?:|I )uncheck "([^"]*)"$/ do |field|
 end
 
 When /^(?:|I )choose "([^"]*)"$/ do |field|
+  # FIXME: visible: :all is not optimal, but the selenium driver don't find it
   choose(field, visible: :all)
 end
 
